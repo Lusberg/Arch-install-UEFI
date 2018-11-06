@@ -16,9 +16,9 @@ $ mkfs.ext4 /dev/nvme0nXpX #OS partition you just set up
 
 $ mount /dev/nvme0nXpX /mnt #mount OS partition
 
-$ mkdir /mnt/boot #create a boot directory in your new OS partition
+$ mkdir /mnt/boot/efi #create a boot directory in your new OS partition
 
-$ mount /dev/nvme0nXpX /mnt/boot #mount existing ESP partition
+$ mount /dev/nvme0nXpX /mnt/boot/efi #mount existing ESP partition
 
 $ pacstrap /mnt base base-devel ranger dialog wpa_supplicant iw grub efibootmgr intel-ucode git
 
@@ -44,7 +44,7 @@ $ nano /etc/hosts # append line: 127.0.1.1 myhostname.localdomain myhostname ; s
 
 $ passwd #rootpass
 
-$ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch_grub #install grub to EFI partition
+$ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub #install grub to EFI partition
 
 $ grub-mkconfig -o /boot/grub/grub.cfg #make grub conf, now you can boot into new OS
 
