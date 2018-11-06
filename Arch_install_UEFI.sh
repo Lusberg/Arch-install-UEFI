@@ -44,7 +44,7 @@ $ nano /etc/hosts # append line: 127.0.1.1 myhostname.localdomain myhostname ; s
 
 $ passwd #rootpass
 
-$ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub #install grub to EFI partition
+$ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub #install grub bootloader to EFI partition
 
 $ grub-mkconfig -o /boot/grub/grub.cfg #make grub conf, now you can boot into new OS
 
