@@ -38,7 +38,7 @@ $ nano /etc/locale.conf #add: LANG=en_US.UTF-8 ; save, exit
 
 $ nano /etc/vconsole.conf #add: KEYMAP=et ; or 'en' for US keyboard ; save, exit ; this is keymap for TTY and terminal emulator
 
-$ echo myhostname > /etc/hostname #substitute 'myhostname' with your chosen hostname, I use 'archlinux' ; has to be lowercase
+$ echo myhostname > /etc/hostname #substitute 'myhostname' with your chosen hostname, i.e. 'archlinux', [user@hostname ~]$
 
 $ nano /etc/hosts # append line: 127.0.1.1 myhostname.localdomain myhostname ; save, exit
 
@@ -58,7 +58,7 @@ $ reboot #when you reboot and get stuck to kernel loading screen, use: ctrl-alt-
 *****************************************************************************************************************************************
 #log in as root
 
-$ useradd -m -G users -s /bin/bash username #substitute username with your chosen username, I use 'Clarke'
+$ useradd -m -G users -s /bin/bash username #substitute username with your chosen username
 
 $ passwd username #add userpass
 
