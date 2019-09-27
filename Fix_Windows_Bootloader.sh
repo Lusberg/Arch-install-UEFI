@@ -1,3 +1,5 @@
+diskpart
+
 list disk
 select disk # Note: Select the disk you want to fix
 
