@@ -68,9 +68,30 @@ $ nano /etc/sudoers #add under Root ALL=(ALL) ALL: username ALL=(ALL) ALL ; esse
 $ exit 
 
 #log in with your new user ; you have a clean OS set up, now you can choose to install your favorite login manager, DE, programs, etc
+$ os-prober #run after your user is set up, it includes your Windows bootloader into Grub
 
 *****************************************************************************************************************************************
+#Fix Arch by using arch-chroot
+#Boot using Arch live USB
+$ mount /dev/nvme0nXpX /mnt #arch root
+$ mount /dev/nvme0nXpX /mnt/boot/efi #ESP partition
+$ arch-chroot /mnt
 
+$ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Grub #install grub bootloader again
+$ refind-install #reinstall refind. If it finds the old install, it does not overwrite, but will add .efi to nvram
+$ grub-mkconfig -o /boot/grub/grub.cfg
+
+$ reboot
+
+#You can boot into your fixed arch using grub/refind
+
+#If you messed with your ESP partition and Windows does not boot, look into Fix_Windows_Bootloader.sh
+#it shows how to fix the ESP partition (which also fixes disk device numbering in Linux).
+
+#Furthermore, you can use /etc/fstab to define your Linux partitions. You can use blkid and lsblk to get
+#more info about your disks & partitions and possibly fix your linux if partitions have changed.
+
+*****************************************************************************************************************************************
 #install pacaur using a shell script: https://gist.github.com/Tadly/0e65d30f279a34c33e9b ; 
 #or install manually: https://www.ostechnix.com/install-pacaur-arch-linux/
 
@@ -86,4 +107,12 @@ $ pacaur -S bbswitch bumblebee
 $ sudo systemctl enable bumblebeed #this XPS 9560 specific section is a guide how to disable dedicated nvidia GPU
 
 $ reboot
+
+*****************************************************************************************************************************************
+#install mainline kernel
+
+$ pacaur -S linux-mainline
+$ pacaur -S bbswitch-mainline #to use bbswitch
+
+
 
